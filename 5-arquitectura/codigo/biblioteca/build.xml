@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<project name="Ejemplo-IngSoft" default="init">
+    <description>
+    	simple example build file
+    </description>
+	<import file="./javadoc.xml"/>
+	<import file="./dependencies.xml"/>
+  <!-- set global properties for this build -->
+  <property name="src" location="src/main/java/"/>
+  <property name="test" location="src/test/java/"/>
+  <property name="build" location="target/classes/"/>
+  <property name="buildTest" location="target/testClasses/"/>
+  <property name="doc"  location="doc"/>
+  <property name="dist"  location="dist"/>
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}"/>
+    <mkdir dir="${buildTest}"/>
+  </target>
+
+  <target name="compile" depends="init" description="compile the source"  >
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac srcdir="${src}" destdir="${build}"/>
+    <javac srcdir="${test}" destdir="${buildTest}"/>
+  </target>
+
+  <target name="dist" depends="clean, compile, document" description="generate the distribution" >
+    <!-- Create the distribution directory -->
+    <mkdir dir="${dist}/lib"/>
+
+    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+    <jar jarfile="${dist}/lib/${ant.project.name}-${DSTAMP}.jar" includes="${build}/**/*.class, ${buildTest}/**/*.class"/>
+  </target>
+
+  <target name="clean" description="clean up" >
+    <!-- Delete the ${build},${buildTest} and ${dist} directory trees -->
+    <echo message="${ant.project.name} - build-common.clean"/>
+    <delete dir="${build}"/>
+    <delete dir="${buildTest}"/>
+    <delete dir="${dist}"/>
+  </target>
+
+   <target name="document" depends="javadoc">
+   	  <antcall target="depend.${ant.project.name}"/>
+      <!-- javadoc sourcepath="./srs/main/java/" destfile="./target/javadoc" packagenames="*"/ -->
+   </target>
+
+    <target name="dist.dependencies">
+        <antcall target="depend.${ant.project.name}"/>
+    </target>
+
+</project>
+
