@@ -18,14 +18,6 @@ public class Libro extends Observable  {
 	private String autor;
 	private String editorial;
 	
-//	public Libro() {
-//		super();
-//		this.isbn = "";
-//		this.titulo = "";
-//		this.autor = "";
-//		this.editorial= "";
-//	}
-//	
 	public Libro(String isbn, String titulo, String autor, String editorial) {
 		super();
 		if(Utiles.stringValido(isbn)){
@@ -53,8 +45,6 @@ public class Libro extends Observable  {
 		return this.editorial;
 	}
 	
-	
-	
 	public boolean isIsbn(String isbn) {
 		return (isbn!=null) && (!isbn.isEmpty()) && (this.isbn.contains(isbn));
 	}
@@ -75,6 +65,15 @@ public class Libro extends Observable  {
 	public String toString() {
 		return this.isbn + " - '" + this.titulo + "' de " + this.autor + ". [" + this.editorial + "]";
 	}
-	
+
+	@Override
+	public boolean equals(Object obj) {
+		if ( this == obj )
+			return true;
+		if (!(obj instanceof Libro) )
+			return false;
+		Libro libro = (Libro) obj;
+		return (this.getIsbn().equals(libro.getIsbn()));
+	}
 	
 }

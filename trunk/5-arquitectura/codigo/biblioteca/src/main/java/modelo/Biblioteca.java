@@ -19,32 +19,47 @@ public class Biblioteca extends Observable {
 		this.libros = new ArrayList<Libro>();
 	}
 	
-	public void ejemplos() {
-		this.addLibro("1234","Las venas abiertas de América Latina", "Eduardo Galeano","editorial");
-		this.addLibro("4521","Guerra y Paz", "León Tolstoy","editorial");
-		this.addLibro("7845","Patas Arriba", "Eduardo Galeano","editorial");
-		this.addLibro("1248","Historia del siglo XX", "Eric Hobsbawm","editorial");
-		this.addLibro("7561","Ficciones", "Jorge Luis Borges","editorial");
-		this.addLibro("3487","100 años de soledad", "Gabriel García Márquez","editorial");
-		this.addLibro("6374","Sobre héroes y tumbas", "Ernesto Sábato","editorial");
+	public void cargarEjemplos() {
+		this.agregarLibro("1234","Las venas abiertas de América Latina", "Eduardo Galeano","editorial");
+		this.agregarLibro("4521","Guerra y Paz", "León Tolstoy","editorial");
+		this.agregarLibro("7845","Patas Arriba", "Eduardo Galeano","editorial");
+		this.agregarLibro("1248","Historia del siglo XX", "Eric Hobsbawm","editorial");
+		this.agregarLibro("7561","Ficciones", "Jorge Luis Borges","editorial");
+		this.agregarLibro("3487","100 años de soledad", "Gabriel García Márquez","editorial");
+		this.agregarLibro("6374","Sobre héroes y tumbas", "Ernesto Sábato","editorial");
 	}
 
-	public void addLibro(String isbn, String titulo, String autor, String editorial) {
-		this.addLibro(new Libro(isbn, titulo, autor, editorial));
+	public void agregarLibro(String isbn, String titulo, String autor, String editorial) {
+		this.agregarLibro(new Libro(isbn, titulo, autor, editorial));
 	}
 	
-	public void addLibro(Libro libro) {
-		if(isLibroExiste(libro.getIsbn())){
+	public void agregarLibro(Libro libro) {
+		if(existeLibro(libro.getIsbn())){
 			throw new UserException("El libro ya Existe");
 		}
 		
 		this.libros.add(libro);
 	}
 	
-	private boolean isLibroExiste(String isbn) {
-		return	!buscarIsbn(isbn).isEmpty();
+	public void sacarLibro(Libro libro) {
+		if(existeLibro(libro.getIsbn())){
+			this.libros.remove(libro);
+		}
 	}
-
+	
+	public boolean existeLibro(String isbn) {
+		return	!(obtenerLibroPorIsbn(isbn)==null);
+	}
+	
+	public Libro obtenerLibroPorIsbn(String isbn) {
+		for (Libro libro : this.libros) {
+			if (libro.isIsbn(isbn)) {
+				return libro;
+			}
+		}
+		return null;
+	}
+	
 	public List<Libro> buscarIsbn(String isbn) {
 		List<Libro> seleccionDeLibros = new ArrayList<Libro>();
 		for (Libro libro : this.libros) {
@@ -85,7 +100,7 @@ public class Biblioteca extends Observable {
 		return seleccionDeLibros;
 	}
 	
-	public List<Libro> getLibros() {
+	public List<Libro> obtenerTodosLosLibros() {
 		List<Libro> seleccionDeLibros = new ArrayList<Libro>();
 		for (Libro libro : this.libros) {
 			seleccionDeLibros.add(libro);
