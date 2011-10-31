@@ -1,0 +1,18 @@
+Resumen de Video
+Desmitificacion de Metodos Agiles
+http://www.screencast.com/t/tegwHqBA
+
+Al adquirir mas conocimientos
+Inestable, iteraciones cortas, mas facil de ajustarse a los cambios
+Armar un plan nos da visibilidad.
+	Magnitud del Proyecto
+	Fechas relevantes
+	Establecer entregables para cada Iteracion
+	Definicion de BackLog
+	Definicion de Arquitectura Base
+	Skills de los desarrolladores
+	Tiempo de Iteraciones
+
+BackLog:	
+	Lista de requerimientos priorizada por el cliente (UserHistories).
+	Estimada por los desarrolladores.
