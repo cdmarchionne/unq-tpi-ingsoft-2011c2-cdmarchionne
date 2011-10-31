@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="Ejemplo-IngSoft" default="init">
+<project name="biblioteca" default="init">
     <description>
     	simple example build file
     </description>
@@ -11,6 +11,15 @@
   <property name="doc" location="doc"/>
   <property name="dist" location="dist"/>
 
+
+	<path id="classpath.base">
+	</path>
+	<path id="classpath.test">
+		<pathelement location="/Projects/Java/Lib/junit.jar" />
+		<pathelement location="${tst-dir}" />
+		<path refid="classpath.base" />
+	</path>
+	
   <target name="init">
     <echo message="${ant.project.name} - Creation OutPut Folders"/>
     <!-- Create the time stamp -->
@@ -24,16 +33,16 @@
     <!-- Compile the java code from ${src} into ${build} -->
     <echo message="${ant.project.name} - Compilation source"/>
     <javac srcdir="${src}" destdir="${build}"/>
-    <echo message="${ant.project.name} - Compilation test"/>
-  	<!-- 
-    <javac srcdir="${test}" destdir="${buildTest}"/>
-     -->
   </target>
 
-  <target name="test" depends="init" description="compile the source"  >
+  <target name="test" depends="compile" description="compile the source"  >
     <!-- Compile the java code from ${src} into ${build} -->
-    <echo message="${ant.project.name} - Compilation test"/>
-    <javac srcdir="${test}" destdir="${buildTest}"/>
+    <echo message="${ant.project.name} - Testing"/>
+    <junit>
+        <classpath refid="classpath.test" />
+        <formatter type="brief" usefile="false" />
+        <test name="${test}/testUnitarios/BibliotecaTest.java" />
+    </junit>
   </target>
 
   <target name="clean" description="clean up" >
