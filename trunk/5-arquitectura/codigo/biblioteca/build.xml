@@ -42,9 +42,9 @@
 	</javac>
   </target>
 
-  <target name="test" depends="compile" description="compile the source"  >
-    <!-- Compile the java code from ${src} into ${build} -->
-    <echo message="${ant.project.name} - Testing"/>
+  <target name="test" depends="compile" description="test the source"  >
+    <!-- Test the java code from ${test} -->
+    <echo message="${ant.project.name} - Testing source"/>
     <junit>
         <classpath refid="classpath.test" />
         <formatter type="brief" usefile="false" />
