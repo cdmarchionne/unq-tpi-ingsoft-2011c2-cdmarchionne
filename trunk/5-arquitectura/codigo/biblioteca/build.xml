@@ -6,8 +6,9 @@
   <!-- set global properties for this build -->
   <property name="src" location="src/main/java/"/>
   <property name="test" location="src/test/java/"/>
-  <property name="build" location="bin/classes/"/>
-  <property name="buildTest" location="bin/testClasses/"/>
+  <property name="build" location="bin"/>
+  <property name="buildClasses" location="${build}/classes/"/>
+  <property name="buildTest" location="${build}/testClasses/"/>
   <property name="doc" location="doc"/>
   <property name="dist" location="dist"/>
   <property name="lib" location="lib"/>
@@ -19,7 +20,7 @@
 		<fileset dir="${lib}">
 			<include name="*.jar" />
 		</fileset>
-		<pathelement location="${build}" />
+		<pathelement location="${buildClasses}" />
 		<pathelement location="${buildTest}" />
 		<path refid="classpath.base" />
 	</path>
@@ -29,14 +30,14 @@
     <!-- Create the time stamp -->
     <tstamp/>
     <!-- Create the build directory structure used by compile -->
-    <mkdir dir="${build}"/>
+    <mkdir dir="${buildClasses}"/>
     <mkdir dir="${buildTest}"/>
   </target>
 
   <target name="compile" depends="init" description="compile the source"  >
-    <!-- Compile the java code from ${src} into ${build} -->
+    <!-- Compile the java code from ${src} into ${buildClasses} -->
     <echo message="${ant.project.name} - Compilation source"/>
-    <javac srcdir="${src}" destdir="${build}"/>
+    <javac srcdir="${src}" destdir="${buildClasses}"/>
 	<javac srcdir="${test}" destdir="${buildTest}">
 		<classpath refid="classpath.test" />
 	</javac>
@@ -58,9 +59,10 @@
   </target>
 
   <target name="clean" description="clean up" >
-    <!-- Delete the ${build},${buildTest} and ${dist} directory trees -->
+    <!-- Delete the ${buildClasses},${buildTest} and ${dist} directory trees -->
     <echo message="${ant.project.name} - Clean"/>
     <delete dir="${build}"/>
+    <delete dir="${buildClasses}"/>
     <delete dir="${buildTest}"/>
     <delete dir="${dist}"/>
   </target>
