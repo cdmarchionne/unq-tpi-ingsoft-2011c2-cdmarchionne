@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project name="biblioteca" default="init">
     <description>
-    	simple example build file
+		Ejemplo de VMC y Test
     </description>
   <!-- set global properties for this build -->
   <property name="src" location="src/main/java/"/>
@@ -10,13 +10,17 @@
   <property name="buildTest" location="bin/testClasses/"/>
   <property name="doc" location="doc"/>
   <property name="dist" location="dist"/>
+  <property name="lib" location="lib"/>
 
 
 	<path id="classpath.base">
 	</path>
 	<path id="classpath.test">
-		<pathelement location="/Projects/Java/Lib/junit.jar" />
-		<pathelement location="${tst-dir}" />
+		<fileset dir="${lib}">
+			<include name="*.jar" />
+		</fileset>
+		<pathelement location="${build}" />
+		<pathelement location="${buildTest}" />
 		<path refid="classpath.base" />
 	</path>
 	
@@ -33,6 +37,9 @@
     <!-- Compile the java code from ${src} into ${build} -->
     <echo message="${ant.project.name} - Compilation source"/>
     <javac srcdir="${src}" destdir="${build}"/>
+	<javac srcdir="${test}" destdir="${buildTest}">
+		<classpath refid="classpath.test" />
+	</javac>
   </target>
 
   <target name="test" depends="compile" description="compile the source"  >
@@ -41,7 +48,12 @@
     <junit>
         <classpath refid="classpath.test" />
         <formatter type="brief" usefile="false" />
-        <test name="${test}/testUnitarios/BibliotecaTest.java" />
+        <!-- 
+		<test name="${test}/testUnitarios/BibliotecaTest.java" />
+		 -->
+		<batchtest>
+			<fileset dir="${buildTest}" includes="**/*Test.class" />
+		</batchtest>
     </junit>
   </target>
 
@@ -53,10 +65,5 @@
     <delete dir="${dist}"/>
   </target>
 
-	<!--
-   <target name="doc" depends="javadoc">
-      <javadoc sourcepath="${src}" destfile="${doc}" packagenames="*"/>
-   </target>
-	-->
 </project>
 
