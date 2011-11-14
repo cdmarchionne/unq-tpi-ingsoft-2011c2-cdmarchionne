@@ -10,8 +10,15 @@
 		 <pathelement location="${build}\tests" />
 	</path>
 	
-	<target name="setup">
-		<delete dir="${build}" />
+	<target name="clean" description="clean up" >
+	    <!-- Delete the ${buildClasses},${buildTest} and ${dist} directory trees -->
+	    <echo message="${ant.project.name} - Clean"/>
+	    <delete dir="${build}"/>
+	    <delete dir="${build}\app"/>
+	    <delete dir="${build}\tests"/>
+	</target>
+
+    <target name="setup" depends="clean">
 		<mkdir dir="${build}"/>
 		<mkdir dir="${build}\app"/>
 		<mkdir dir="${build}\tests"/>
