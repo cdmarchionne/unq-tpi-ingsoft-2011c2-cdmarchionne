@@ -1,4 +1,4 @@
-<project name="capicua" basedir="." default="ejecutar.tests">
+<project name="competitionKata" basedir="." default="ejecutar.tests">
 	<property name="build" location="build" />
 	<property name="lib" location="lib" />
 	
