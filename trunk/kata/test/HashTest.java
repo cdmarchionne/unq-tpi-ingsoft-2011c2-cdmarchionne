@@ -23,4 +23,9 @@ public class HashTest extends TestCase {
 		assertEquals(Hash.obtenerHash("Hola"), actual);
 	}
 	
+	public void testShouldFailIfHashTheSameWordCaseSensitive(){
+		Integer actual = Hash.obtenerHash("Hola");
+		assertFalse(Hash.obtenerHash("hola")==actual);
+	}
+	
 }
