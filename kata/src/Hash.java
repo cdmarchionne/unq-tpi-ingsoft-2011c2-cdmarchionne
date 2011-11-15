@@ -1,8 +1,11 @@
 
 public class Hash {
 
-	public static int obtenerHash(String string) {
-		return 0;
+	public static Integer obtenerHash(String palabra) {
+		if(palabra!=null){
+			return 0;
+		}
+		return null;
 	}
 
 }
