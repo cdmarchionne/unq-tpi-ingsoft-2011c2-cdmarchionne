@@ -18,4 +18,9 @@ public class HashTest extends TestCase {
 		assertFalse(Hash.obtenerHash("2")==actual);
 	}
 	
+	public void testShouldAssertIfHashTheSameWordHola(){
+		Integer actual = Hash.obtenerHash("Hola");
+		assertEquals(Hash.obtenerHash("Hola"), actual);
+	}
+	
 }
