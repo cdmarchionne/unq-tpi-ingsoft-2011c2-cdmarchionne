@@ -13,4 +13,9 @@ public class HashTest extends TestCase {
 		assertEquals(Hash.obtenerHash(""), actual);
 	}
 	
+	public void testShouldFailIfHashADiffrentWord(){
+		Integer actual = Hash.obtenerHash("1");
+		assertFalse(Hash.obtenerHash("2")==actual);
+	}
+	
 }
