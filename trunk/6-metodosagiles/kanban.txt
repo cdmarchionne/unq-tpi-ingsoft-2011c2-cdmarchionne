@@ -1,0 +1,43 @@
+
+	  Kanban
+	----------
+
+Referencia:
+	Video realizado por la empresa bit360.
+	http://www.youtube.com/watch?hl=en&v=0EIMxyFw9T8&gl=US
+
+Resumen:
+--------
+
+KANBAN es una tecnica agil para la fabricación de productos de cualquier tipo. Significa "Tarjetas Visuales".
+En este texto vamos a hacer referencia a la tecnica aplicada al desarrollo de software.
+Kanban no defiene si el proceso esta dividido en iteraciones o no.
+Scrum define los siguientes pasos
+	+ On Deck	(en espera)
+	+ In-Progress	(en desarrollo)
+	+ Done		(finalizado)
+En Kanban la etapa de desarrollo suguiere dividirlas en más etapas para poder ver el flujo entre ellas. Por ejemplo: Specify(especificacion), Execute(ejecutacion), Review(revision).
+Este sistema permite poder coordinar varias tareas al mismo tiempo enfocandonos un poco en cada una.
+Scrum especifica las tareas que se deben realizar pero no como interactuar entre ellas.
+Kanban coloca un número que limita las tareas que puede estar en cada etapa para trabajar de forma más eficiente.
+Scrum especifica un grupo de tareas a realizar en cada sprint (las cuales si no estan terminadas al 100% estan en progreso) mientras que Kanban nos da un flujo continuo de tareas terminadas.
+Se deben poder encontrar el menor numero kanban para cada etapa y asi lograr maximizar la produccion con la demanda.
+WIP = Work In Progress
+
+Conslusion:
+-----------
+
+Controla las etapas para la fabricación de productos en cantidad y tiempo.
+	REGLAS:
+	1. El proceso posterior recogerá del anterior los productos necesarios en las cantidades precisas del lugar y momento oportuno.
+	2. El proceso precedente deberá fabricar sus productos en las cantidades recogidas por el proceso siguiente.
+	3. Los productos defectuosos nunca deben pasar al proceso siguiente.
+	4. El número de Kanban debe minimizarse.
+	5. El Kanban habrá de utilizarse para lograr la adaptación a pequeñas fluctuaciones de la demanda.
+	6. Balancear la producción.
+
+El sistema permite lograr:
+	+ Equilibrio, sincronización y flujo.
+	+ Calidad: "Hacerlo bien de primera".
+	+ Colaboracion entre los miembros del equipo.
+
