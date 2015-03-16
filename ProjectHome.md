@@ -1,0 +1,1 @@
+Este proyecto es producido para fines académicos. Contemplara todos los elementos necesarios para entregar en la materia Ingeniería de Software en la carrera Tecnicatura en Programacion de la Universidad Nacional de Quilmes
